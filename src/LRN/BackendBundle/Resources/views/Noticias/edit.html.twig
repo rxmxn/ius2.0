@@ -1,0 +1,128 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+{% block contenido%}
+
+    <div class="container" style="margin-bottom: 20px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-horizontal">
+                    <fieldset>
+                        <legend  style="width: 20em;">Editar Noticia </legend>
+
+                        {{ form_start(edit_form) }}
+
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form) }}</div>
+        <div class="form-error">{{ form_errors(edit_form.titular) }}</div>
+        <label class="control-label">{{ form_label(edit_form.titular) }}</label>
+        <div class="controls">{{ form_widget(edit_form.titular, { 'attr': {
+            'accesskey' : 'n',
+            'tabindex' : 1,
+            'placeholder' : "Titular . . ."
+            }}) }}</div>
+        </span>
+                        </div>
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form.nombreAutor) }}</div>
+        <label class="control-label">{{ form_label(edit_form.nombreAutor) }}</label>
+        <div class="controls">{{ form_widget(edit_form.nombreAutor, { 'attr': {
+            'accesskey' : 'n',
+            'tabindex' : 1,
+
+            'placeholder' : "Nombre del Autor . . ."}}) }}</div>
+            </span>
+                        </div>
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form.categoria) }}</div>
+        <label class="control-label">{{ form_label(edit_form.categoria) }}</label>
+        <div class="controls">{{ form_widget(edit_form.categoria, { 'attr': {
+                'accesskey' : 'n',
+                'tabindex' : 1,
+
+                'placeholder' : "Categoria . . ."}}) }}</div>
+            </span>
+                        </div>
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form.fechaArticulo) }}</div>
+        <label class="control-label">{{ form_label(edit_form.fechaArticulo) }}</label>
+        <div class="controls">{{ form_widget(edit_form.fechaArticulo)}}</div>
+            </span>
+                        </div>
+
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form.texto) }}</div>
+        <label class="control-label">{{ form_label(edit_form.texto) }}</label>
+
+            <div class="span12" id="content">
+                <div class="row-fluid">
+                    <!-- block -->
+                    <div class="block">
+                        <div class="block-content collapse in">
+                            {{ form_widget(edit_form.texto, { 'attr': {
+                                'style' : "width:98%; height:200px;",
+                                'placeholder' : "Introduzca texto ..."
+                            } }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </span>
+                        </div>
+
+                        <div class="control-group" style="width: 15em;">
+        <span>
+        <div class="form-error">{{ form_errors(edit_form.foto) }}</div>
+        <label class="control-label">{{ form_label(edit_form.foto,'Modificar foto') }}</label>
+            <img src="{{ asset('uploads/images/' ~ entity.rutaFoto) }}" style="height: 20em;width: 25em " >
+        <div class="controls">{{ form_widget(edit_form.foto) }}</div>
+            </span>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+
+                                {#<div class="btn btn-primary"  >{{ form_widget(form.submit) }}</div>#}
+                                <button class="btn btn-primary" type="submit" >Actualizar</button>
+                                <a href="{{ path('backend_homepage') }}" class="btn btn-default">Noticias</a>
+                            </div>
+                        </div>
+
+                        {{ form_end(edit_form) }}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

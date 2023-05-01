@@ -1,0 +1,13 @@
+parameters:
+#    hpt_default.example.class: HPT\DefaultBundle\Example
+
+#services:
+#    hpt_default.example:
+#        class: %hpt_default.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+#    kernel.listener.DefaultExceptionListener:
+#        class: HPT\DefaultBundle\EventListener\DefaultExceptionListener
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

@@ -1,0 +1,76 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Conceptos</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar">
+        <span>
+            <h3>
+                En esta sección, orientada a presentar herramientas para la gestión de la seguridad de los usuarios
+                y su información en el marco de las redes sociales y el ciberespacio, se exponen los conceptos básicos
+                sobre las redes sociales, los derechos asociados a la protección del usuario y su información, los
+                factores de riesgo y problemáticas de seguridad, los mecanismos de protección del usuario y su
+                información y las propuestas para potenciar el nivel de seguridad en las redes sociales.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                <li><a href="{{ path('lrn_conceptos') }}">TODOS</a></li>
+                {% for concepto in conceptos %}
+                    <li><a href="{{ path('conceptos_mostrar', { 'id': concepto.id }) }}">{{ concepto.subtitulo }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div style="width: 80%; padding-left: 10%; padding-right: 10%; text-align: justify; margin-bottom: 100px;">
+        {% render controller('BackendBundle:Conceptos:conceptosMostrar', { 'id' : concepto.id }) %}
+    </div>
+{% endblock %}

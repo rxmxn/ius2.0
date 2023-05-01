@@ -1,0 +1,19 @@
+backend_videos_crear:
+    pattern: /crear/
+    defaults: { _controller: BackendBundle:Videos:videosCrear }
+
+backend_videos_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Videos:videosEditar }
+
+backend_videos_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Videos:videosBorrar }
+
+backend_videos_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Videos:videosListar }
+
+backend_videos_mostrar:
+    pattern: /mostrar/{id}/
+    defaults: { _controller: BackendBundle:Videos:videosMostrar }

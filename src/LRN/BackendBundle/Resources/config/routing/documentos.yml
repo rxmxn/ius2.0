@@ -1,0 +1,15 @@
+backend_documento_crear:
+    pattern: /crear/
+    defaults: { _controller: BackendBundle:Documentos:documentoCrear }
+
+backend_documento_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Documentos:documentoEditar }
+
+backend_documento_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Documentos:documentoBorrar }
+
+backend_documento_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Documentos:documentoListar }

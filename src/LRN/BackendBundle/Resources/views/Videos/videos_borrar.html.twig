@@ -1,0 +1,44 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li>
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+    {% block contenido %}
+
+        <div class="form-group" style="margin-bottom: 20px; margin-top: 20px;">
+
+            <table class="table">
+                <tr >
+                    <th>Nombre</th>
+                    <td>{{ video.nombre }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <p class="well"><strong>Seguro que desea borrar?</strong></p>
+
+        <form action="{{ path('backend_videos_borrar', { 'id': video.id }) }}" method="post">
+            <input class="btn btn-danger" type="submit" value="Borrar"/>
+        </form>
+
+
+    {% endblock %}

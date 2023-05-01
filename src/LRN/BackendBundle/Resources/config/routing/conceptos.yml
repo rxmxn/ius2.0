@@ -1,0 +1,19 @@
+backend_conceptos_crear:
+    pattern: /crear/
+    defaults: { _controller: BackendBundle:Conceptos:conceptosCrear }
+
+backend_conceptos_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Conceptos:conceptosEditar }
+
+backend_conceptos_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Conceptos:conceptosBorrar }
+
+backend_conceptos_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Conceptos:conceptosListar }
+
+backend_conceptos_mostrar:
+    pattern: /mostrar/{id}/
+    defaults: { _controller: BackendBundle:Conceptos:conceptosMostrar }

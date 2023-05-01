@@ -1,0 +1,68 @@
+lrn_default_homepage:
+    pattern:  /
+    defaults: { _controller: LRNProtectBundle:Default:inicio }
+
+lrn_noticias:
+    pattern:  /noticias/
+    defaults: { _controller: LRNProtectBundle:Noticias:noticias }
+
+lrn_documentos:
+    pattern:  /tutorial/documentos/
+    defaults: { _controller: LRNProtectBundle:Default:documentos }
+
+lrn_conceptos:
+    pattern:  /conceptos/
+    defaults: { _controller: LRNProtectBundle:Default:conceptos }
+
+lrn_estadisticas:
+    pattern:  /estadisticas/
+    defaults: { _controller: LRNProtectBundle:Default:estadisticas }
+
+## Importar las rutas de la entidad Noticias generadas en el bundle DefaultBundle
+#noticias:
+#    resource: "@LRNProtectBundle/Resources/config/routing/noticias.yml"
+#    prefix:   /noticias/
+
+noticias_categoria:
+   pattern:  /noticias/categoria/{categoria}/
+   defaults: { _controller: LRNProtectBundle:Noticias:FindCategoria }
+
+noticias_nombrePost:
+   pattern:  /noticias/nombreAutor/
+   defaults: { _controller: LRNProtectBundle:Noticias:nombrePost }
+
+noticias_show:
+   pattern:  /noticias/show/{id}/
+   defaults: { _controller: LRNProtectBundle:Noticias:show }
+
+lrn_tutorial:
+    pattern:  /tutorial/{nombreRedSocial}/
+    defaults: { _controller: LRNProtectBundle:Default:tutorialMostrar }
+
+lrn_tutorial_index:
+    pattern:  /tutorial/
+    defaults: { _controller: LRNProtectBundle:Default:tutorialIndex }
+
+find_tutorial:
+    pattern:  /tutorial/find/{nombreTutorial}/
+    defaults: { _controller: LRNProtectBundle:Default:FindTutorial }
+
+conceptos_mostrar:
+    pattern:  /conceptos/mostrar/{id}
+    defaults: { _controller: LRNProtectBundle:Default:conceptosMostrar }
+
+estadisticas_categoria:
+   pattern:  /estadisticas/categoria/{categoria}/
+   defaults: { _controller: LRNProtectBundle:Default:estadisticasCategoria }
+
+documentos_categoria:
+   pattern:  /documentos/categoria/{categoria}/
+   defaults: { _controller: LRNProtectBundle:Default:documentosCategoria }
+
+noticias_paginas:
+   pattern:  /noticias/paginador/{pagina}/
+   defaults: { _controller: LRNProtectBundle:Noticias:paginador }
+
+videos:
+    pattern:  /noticias/videos/
+    defaults: { _controller: LRNProtectBundle:Default:videos }

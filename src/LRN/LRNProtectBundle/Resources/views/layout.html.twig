@@ -1,0 +1,195 @@
+{% extends "::base.html.twig" %}
+
+{% block head %}
+    {#<link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />#}
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/bootstrap-responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/docs.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/js/google-code-prettify/prettify.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/tabs.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/gray/gray.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/lrnprotect/css/mystyles.css') }}" />
+
+    {#<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('bundles/lrnprotect/ico/apple-touch-icon-144-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('bundles/lrnprotect/ico/apple-touch-icon-114-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('bundles/lrnprotect/ico/apple-touch-icon-72-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed" href="{{ asset('bundles/lrnprotect/ico/apple-touch-icon-57-precomposed.png') }}">#}
+    <link rel="shortcut icon" href="{{ asset('bundles/lrnprotect/ico/graphInverted.ico') }}">
+{% endblock %}
+
+    {% block body %}
+
+        <a id="menu" style="position: fixed; top: 0; left: 0; width: 60px; height: 40px; background-color: #000000;
+        overflow-x: visible; overflow-y: visible; display: table; z-index: 1050;
+         text-align: center; margin-bottom: 15px;"
+           onmouseover="ShowPart('navbar');"
+           onmouseout="HidePart('navbar');"
+           href="{{ path('lrn_default_homepage') }}">
+        <span  id="menu_span" style="color: #F7F7F9; font-weight: lighter; font-size: 16px;
+        display: table-cell; vertical-align: middle;">IUS2.0</span>
+        </a>
+
+        <!-- Navbar
+    ================================================== -->
+        <div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+            <div class="navbar-inner" style="opacity: 0.87;">
+                <div class="container"
+                     onmouseover="ShowPart('navbar');"
+                     onmouseout="HidePart('navbar');"
+                     style="width: 100%;">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {#<a class="brand" href="javascript:void(0);">#}
+                        {#&#123;&#35;onclick="ButtonClicked('navbar');"&#35;&#125;#}
+                        {#<span style="color: #F7F7F9; font-weight: lighter;">IUS2.0</span></a>#}
+                    <div class="nav-collapse collapse" style="margin-left: 10%;">
+                        <ul class="nav" style="text-transform: uppercase;">
+                            {% block menu %}
+                            {% endblock %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% block subhead %}
+        {% endblock %}
+
+        {% block contenido %}
+        {% endblock %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+        <!-- Le javascript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ asset('bundles/lrnprotect/js/jquery.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-transition.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-alert.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-modal.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-dropdown.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-scrollspy.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-tab.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-tooltip.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-popover.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-button.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-collapse.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-carousel.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-typeahead.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/bootstrap-affix.js') }}"></script>
+
+        <script src="{{ asset('bundles/lrnprotect/js/holder/holder.js') }}"></script>
+        <script src="{{ asset('bundles/lrnprotect/js/google-code-prettify/prettify.js') }}"></script>
+
+        <script src="{{ asset('bundles/lrnprotect/js/application.js') }}"></script>
+
+        <script src="{{ asset('bundles/lrnprotect/js/gray/jquery.gray.min.js') }}"></script>
+
+        <script type="text/javascript" language="JavaScript">
+            function HidePart(d) { document.getElementById(d).style.opacity = 0; }
+            function ShowPart(d) { document.getElementById(d).style.opacity = 1; }
+
+            function ButtonClicked(d)
+            {
+//                var elem = this.parentNode;
+//
+//                if(elem.style.display == 'none') { HidePart(d); elem.style.display = 'block'; }
+//                else  { ShowPart(d); elem.style.display = 'none'; }
+//                Sfjs.setPreference('toolbar/displayState', 'block');
+
+                if(document.getElementById(d).style.opacity == 0) { ShowPart(d); }
+                else  { HidePart(d); }
+            }
+
+            function CambiarImg(d, flag)
+            {
+                //var myArray = document.getElementById(d).innerHTML.split('.');
+                var myArray = document.getElementById(d).getAttribute("src").split('.');
+                var first = myArray[0].split('-');
+
+                var name = first[0]+'.'+myArray[1];
+
+                //if((flag != 'true') && first[1] != null)
+                if(flag != 'true')
+                {
+                    name = myArray[0]+'-bw.'+myArray[1];
+                }
+                //alert(name);
+                document.getElementById(d).setAttribute("src",name);
+            }
+
+            function CambiarImgDiv(d, flag, carpeta)
+            {
+                //var myArray = document.getElementById(d).innerHTML.split('.');
+                var myArrayStyle = document.getElementById(d).getAttribute('style').split(';');
+                //alert(myArrayStyle);
+                /*
+                * myArrayStyle[0] = background: url('/uploads/images/1_1-bw.jpg') repeat center center
+                * myArrayStyle[1] = width: 25%
+                * myArrayStyle[2] = height: 300px
+                * myArrayStyle[3] = display: table
+                * myArrayStyle[4] = text-align: center
+                * */
+
+                var address = myArrayStyle[0].split("'");
+                //alert(address);
+                /*
+                * address[0] = background: url(
+                * address[1] = /uploads/images/1_1-bw.jpg
+                * address[2] = ) repeat center center
+                * */
+
+                //var file = address[1].split('/');
+                //alert(file);
+
+                var myArray = document.getElementById(d).getAttribute('title');
+                //alert(myArray);
+
+                var first = myArray.split('-');
+                var extension = (first[1].split('.'))[1];
+                //alert(extension);
+
+                var name = first[0]+'.'+extension;
+
+                //if((flag != 'true') && first[1] != null)
+                if(flag != 'true')
+                {
+                    name = first[0]+'-bw.'+extension;
+                }
+                //alert(name);
+                // name = 1_1-bw.jpg
+
+                if(carpeta == null)
+                    carpeta = 'images';
+
+                var style = address[0] + "'/uploads/"+carpeta+"/" + name + "'" + address[2] + ";" +
+                        myArrayStyle[1] + ";" + myArrayStyle[2] + ";" + myArrayStyle[3] + ";" + myArrayStyle[4] + ";";
+
+                //alert(style);
+
+                document.getElementById(d).setAttribute("style",style);
+            }
+
+            //Add Hover effect to menus
+            jQuery('ul.nav li.dropdown').hover(function() {
+                jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn();
+            }, function() {
+                jQuery(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut();
+            });
+
+            $('.carousel').carousel({
+                interval: false
+            })
+
+        </script>
+
+    {% endblock %}

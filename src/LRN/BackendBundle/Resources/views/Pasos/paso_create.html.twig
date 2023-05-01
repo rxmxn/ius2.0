@@ -1,0 +1,98 @@
+{# src/HPT/UsuarioBundle/Resources/views/Default/registro.html.twig #}
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form action={% block action %}"{{ path('backend_paso_crear', {'tutorial_id':tutorial_id}) }}" {% endblock %}
+              method="post" {{ form_enctype(formulario) }} style="margin-bottom: 20px; margin-top: 20px; margin-left: 20px;">
+
+            {#
+                {{ form_widget(formulario) }}
+                Mostrando el formulario que paso el controlador.
+                form_widget muestra todos los campos del formulario ,
+                junto con los posibles mensajes de error y el título de cada campo.
+
+                La funcion form_enctype() de Twig determina si es necesario añadir el atributo
+                enctype="multipart/form-data" porque el formulario incluye campos para subir archivos.
+            #}
+
+            <div class="alert-danger"><h2>{{ form_errors(formulario) }}</h2></div>
+
+            <!----- contact-form ------>
+            <div class="contact-form">
+
+                <div class="contact-form-row">
+                    <div>
+                        <span>N&uacute;mero :</span>
+                        {{ form_widget(formulario.numero, { 'attr': {
+                            'accesskey' : 'n',
+                            'tabindex' : 1,
+                            'class' : "text",
+                            'placeholder' : "Número"
+                        } }) }}
+                    </div>
+
+                    <div>
+                        <span>T&iacute;tulo :</span>
+                        {{ form_widget(formulario.titulo, { 'attr': {
+                            'tabindex' : 2,
+                            'class' : "text",
+                            'placeholder' : "Título"
+                        } }) }}
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+
+
+                <div class="contact-form-row2">
+                    <div>
+                        <span>Explicaci&oacute;n :</span>
+                        {{ form_widget(formulario.explicacion, { 'attr': {
+                            'tabindex' : 3,
+                            'class' : "text",
+                            'placeholder' : "Explicación del Paso"
+                        } }) }}
+                    </div>
+                    <div>
+                        <span>Imagen :</span>
+                        {% block imagen %}{% endblock %}
+                    </div>
+                    <div>
+                        <span>Si desea seleccionar una nueva imagen :</span>
+                        {{ form_widget(formulario.imagen) }}
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+
+                <input type="submit" value={% block value_boton %}"Agregar Paso"{% endblock %}>
+                <div class="clearfix"> </div>
+            </div>
+
+            {{ form_rest(formulario) }}
+
+        </form>
+
+    {% endblock %}

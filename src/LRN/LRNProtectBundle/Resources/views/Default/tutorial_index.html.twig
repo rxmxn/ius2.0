@@ -1,0 +1,103 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="active dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel" >
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Tutoriales</h1>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar">
+        <span>
+            <h3>
+                En esta sección, alineada para facilitar métodos para la gestión de la seguridad de los usuarios
+                y su información en el marco de las redes sociales y el ciberespacio, se presentan algunos manuales
+                y tutoriales para la utilización fructífera de las distintas redes sociales, la participación óptima
+                en este entorno, la salvaguardia de los derechos asociados a la protección del usuario y su información
+                y el control moderado de los perfiles de usuario.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                {% for tuto in tutoriales %}
+                    <li><a href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                            {{ tuto.nombreRedSocial }}
+                        </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div style="width: 100%;">
+        {% for tuto in tutoriales %}
+
+            <div class="span3" {% if tuto.nombreRedSocial=='twitter' %}style="margin-left: 27.5%;"{% endif %}>
+
+                <a href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}"
+                   style="text-align: center;">
+                    <img alt="..." class="img-responsive box_shadow"
+                         src="{{ asset('uploads/tutoriales/' ~ tuto.rutaImagen) }}"
+                         style="height: 20em;width: 40em; position: relative;"
+                         onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.5;">
+                </a>
+                <a href="{{ asset('uploads/tutoriales/' ~ tuto.rutaPDF) }}" download>
+                    <h6 class="text-center" style="text-transform: uppercase;
+                    /*z-index: 1; position: absolute; margin-top: 6em;*/
+                    margin-bottom: 80px;">
+                        <li class="icon-download-alt"></li>{{ tuto.nombreRedSocial }}
+                    </h6>
+                </a>
+                {#</div>#}
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="clearfix" style="margin-bottom: 50px;"> </div>
+
+{% endblock %}

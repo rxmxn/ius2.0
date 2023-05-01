@@ -1,0 +1,5 @@
+ul#myTab { list-style-type: none; margin: 15px 0 15px 0; padding: 0 0 0 0; font-size: 18pt;}
+ul#myTab li { display: inline; }
+ul#myTab li a { color: #2C3E50; padding: 0.5em; text-decoration: none; }
+ul#myTab li a:hover { background-color: rgba(225, 224, 222, 0.50); }
+ul#myTab li.active a { color: rgba(42, 129, 254, 0.86); border-top: solid 1px #E1E0DE;}

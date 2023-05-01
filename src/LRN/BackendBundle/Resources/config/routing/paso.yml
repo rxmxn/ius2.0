@@ -1,0 +1,19 @@
+backend_paso_crear:
+    pattern: /crear/{tutorial_id}/
+    defaults: { _controller: BackendBundle:Paso:pasoCrear }
+
+backend_paso_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Paso:pasoEditar }
+
+backend_paso_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Paso:pasoBorrar }
+
+backend_paso_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Paso:pasoListar }
+
+backend_paso_mostrar:
+    pattern: /mostrar/{id}/
+    defaults: { _controller: BackendBundle:Paso:pasoMostrar }

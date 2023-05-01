@@ -1,0 +1,119 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel" >
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class="active"><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Contenidos</h1>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar">
+        <span>
+            <h3>
+                En esta sección, organizada para proporcionar información diversa sobre el estudio de la gestión de
+                seguridad de los usuarios y su información en el marco de las redes sociales y el ciberespacio, se
+                compendian los resultados de investigaciones realizadas por investigadores, organizaciones e
+                instituciones que se dedican al estudio de las tecnologías de la información y las comunicaciones,
+                así como otros temas afines.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                <li><a href="{{ path('lrn_documentos') }}">TODOS</a></li>
+                {% for cat in categorias %}
+                    <li><a href="{{ path('documentos_categoria', { 'categoria': cat.temaRelacionado }) }}">
+                            {{ cat.temaRelacionado }}
+                        </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {#<div style="margin-left: 10%; width: 80%;">#}
+    <div style="width: 100%;">
+        {% for doc in documentos %}
+
+            <div class="span3">
+                {#<a href="{{ asset('uploads/pdfs/' ~ doc.rutaPDF) }}">#}
+                {#<img id="{{ doc.id }}" alt="..." class="img-responsive" src="{{ asset('uploads/pdfs/' ~ doc.rutaImagen) }}"#}
+                     {#title="post-name"#}
+                     {#&#123;&#35;onmouseover="CambiarImg({{ doc.id }}, 'true')"&#35;&#125;#}
+                     {#&#123;&#35;onmouseout="CambiarImg({{ doc.id }}, 'false')"&#35;&#125;#}
+                     {#style="height: 300px;">#}
+
+                {#</a>#}
+                <div id="{{ doc.id }}" title="{{ doc.rutaImagen }}"
+                     style="width: 100%; height: 300px; display: table; text-align: center;">
+                    <div style="display: table-cell; margin-top: 10px;">
+                        <a href="{{ asset('uploads/pdfs/' ~ doc.rutaPDF) }}" >
+                            <img src="{{ asset('uploads/pdfs/pdfIcon.jpg') }}" style="width: 170px; height: 200px;"
+                                    class="box_shadow"
+                                    onmouseover="this.style.opacity=1;" onmouseout="this.style.opacity=0.5;">
+                            {#<img src="{{ asset('uploads/pdfs/' ~ doc.rutaImagen) }}" style="width: 170px; height: 200px;"#}
+                                 {#class="grayscale grayscale-fade">#}
+                        </a>
+                        <a href="{{ asset('uploads/pdfs/' ~ doc.rutaPDF) }}" download>
+                            <h6 style="text-transform: uppercase;"><li class="icon-download-alt"></li>{{ doc.nombre }}</h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    {##}
+    {#{% for doc in documentos %}#}
+        {#<div style="display: table; width: 100%; text-align: center; margin-bottom: 15px;">#}
+            {#<span style="display: table-cell; vertical-align: middle;">#}
+                {#<H2>-{{ doc.temaRelacionado }}: <a href="{{ asset('uploads/pdfs/' ~ doc.rutaPDF) }}">{{ doc.nombre }}</a></H2>#}
+            {#</span>#}
+        {#</div>#}
+    {#{% endfor %}#}
+    <div class="clearfix" style="margin-bottom: 100px;"> </div>
+{% endblock %}

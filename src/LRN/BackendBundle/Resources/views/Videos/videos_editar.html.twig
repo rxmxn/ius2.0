@@ -1,0 +1,22 @@
+{% extends 'BackendBundle:Videos:videos_create.html.twig' %}
+
+{% block action %}
+    "{{ path('backend_videos_editar', { 'id': video.id }) }}"
+{% endblock %}
+
+{% block imagen %}
+    {#<div style="margin-left: auto; margin-right: auto; width: 500px;">#}
+        <video width="320" height="240" controls="controls"
+                {#autoplay loop#}
+               style="width: 500px; height: 400px;">
+            <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/mp4" />
+            <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/ogg" />
+            <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/webm" />
+            Su buscador no soporta estos videos.
+        </video>
+    {#</div>#}
+{% endblock %}
+
+{% block value_boton %}
+    "Guardar cambios"
+{% endblock %}

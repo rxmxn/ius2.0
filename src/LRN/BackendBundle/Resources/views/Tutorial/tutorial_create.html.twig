@@ -1,0 +1,113 @@
+{# src/HPT/UsuarioBundle/Resources/views/Default/registro.html.twig #}
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+    {% block contenido %}
+
+        <form action={% block action %}"{{ path('backend_tutorial_registro') }}" {% endblock %}
+              method="post" {{ form_enctype(formulario) }} style="margin-bottom: 20px; margin-top: 20px; margin-left: 20px;">
+
+            {#
+                {{ form_widget(formulario) }}
+                Mostrando el formulario que paso el controlador.
+                form_widget muestra todos los campos del formulario ,
+                junto con los posibles mensajes de error y el título de cada campo.
+
+                La funcion form_enctype() de Twig determina si es necesario añadir el atributo
+                enctype="multipart/form-data" porque el formulario incluye campos para subir archivos.
+            #}
+
+            <div class="alert-danger"><h2>{{ form_errors(formulario) }}</h2></div>
+
+            <!----- contact-form ------>
+            <div class="contact-form">
+
+                <div class="contact-form-row" style="margin-left: 30px;">
+                    <div>
+                        <span>Nombre Red Social :</span>
+                        {{ form_widget(formulario.nombreRedSocial, { 'attr': {
+                            'accesskey' : 'n',
+                            'tabindex' : 1,
+                            'class' : "text",
+                            'placeholder' : "Red Social"
+                        } }) }}
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+                <div class="contact-form-row" style="margin-left: 30px;">
+                    <div>
+                        <span>Fecha de Publicaci&oacute;n :</span>
+                        {{ form_widget(formulario.fechaPublicacion, { 'attr': {
+                            'tabindex' : 2,
+                            'style' : 'width: 100%'
+                        } }) }}
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+
+                <div class="span12" id="content">
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="block-content collapse in">
+                                {{ form_widget(formulario.descripcion, { 'attr': {
+                                    'style' : "width:98%; height:200px;",
+                                    'placeholder' : "Pequeña descripción del tutorial"
+                                } }) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+
+                <div class="contact-form-row2">
+
+                    {% block pdf %}{% endblock %}
+                    <div class="text-center">
+                        <span>Si desea seleccionar un nuevo documento :</span>
+                        {{ form_widget(formulario.pdf) }}
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+                <div class="contact-form-row2">
+                    {% block imagen %}{% endblock %}
+                    <div class="text-center">
+                        <span>Si desea seleccionar una nueva imagen :</span>
+                        {{ form_widget(formulario.imagen) }}
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+
+                <div class="text-center">
+                    <input type="submit" value={% block value_boton %}"Crear Tutorial"{% endblock %} >
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+            {{ form_rest(formulario) }}
+
+        </form>
+
+    {% endblock %}

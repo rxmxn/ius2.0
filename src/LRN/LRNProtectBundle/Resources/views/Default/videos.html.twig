@@ -1,0 +1,90 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown active">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Noticias</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar" style="margin-top: 0;">
+        <span>
+            <h3 style="margin-top: 0;">
+                En esta sección, enfocada en proveer información pormenorizada, actualizada y novedosa, se presentan
+                noticias sobre las principales redes sociales, los derechos asociados a la protección del usuario y
+                su información, las problemáticas de seguridad y sus posibles alternativas de solución.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                <li><a href="{{ path('lrn_noticias') }}">TODOS</a></li>
+                <li><a href="{{ path('videos') }}">VIDEOS</a></li>
+                {% for entity in categoria %}
+                    <li><a href="{{ path('noticias_categoria', { 'categoria': entity.categoria }) }}">{{ entity.categoria }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% for video in videos %}
+        <div class="text-center" style="margin-bottom: 20px;">
+            <h2>{{ video.nombre }}.</h2>
+        </div>
+        <div style="margin-left: auto; margin-right: auto; width: 500px; margin-bottom: 100px;">
+            <video width="500" height="400" controls="controls"
+                    {#autoplay loop#}
+                   >
+                <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/mp4" />
+                <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/ogg" />
+                <source src="{{ asset('uploads/videos/' ~ video.rutaVideo) }}" type="video/webm" />
+                Su buscador no soporta estos videos.
+            </video>
+        </div>
+    {% endfor %}
+
+    <div class="clearfix"> </div>
+
+{% endblock %}

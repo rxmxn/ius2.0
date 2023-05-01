@@ -1,0 +1,27 @@
+backend_noticias_create:
+   pattern:  /create/
+   defaults: { _controller: BackendBundle:Noticias:create }
+
+backend_noticias_new:
+   pattern:  /new/
+   defaults: { _controller: BackendBundle:Noticias:new }
+
+backend_noticias_show:
+   pattern:  /show/{id}/
+   defaults: { _controller: BackendBundle:Noticias:show }
+
+backend_noticias_edit:
+   pattern:  /edit/{id}/
+   defaults: { _controller: BackendBundle:Noticias:edit }
+
+backend_noticias_update:
+   pattern:  /update/{id}/
+   defaults: { _controller: BackendBundle:Noticias:update }
+
+backend_noticias_delete:
+   pattern:  /delete/{id}/
+   defaults: { _controller: BackendBundle:Noticias:delete }
+
+backend_noticias_nombrePost:
+   pattern:  /nombreAutor/
+   defaults: { _controller: BackendBundle:Noticias:nombrePost }

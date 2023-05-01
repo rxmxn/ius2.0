@@ -1,0 +1,27 @@
+{% extends 'BackendBundle:Tutorial:tutorial_create.html.twig' %}
+
+{% block action %}
+    "{{ path('backend_tutorial_editar', { 'id': tutorial.id }) }}"
+{% endblock %}
+
+{% block pdf %}
+    <div style="margin-left: auto; margin-right: auto; width: 500px;">
+        <span>Tutorial Actual : <a href="{{ asset('uploads/tutoriales/' ~ tutorial.rutaPDF) }}">{{ tutorial.rutaPDF }}</a></span>
+        <iframe src="{{ asset('uploads/tutoriales/' ~ tutorial.rutaPDF) }}"
+                style="width: 500px; height: 350px; overflow-scrolling: auto; ">
+            <p>Muestra del PDF cargado</p>
+        </iframe>
+    </div>
+
+{% endblock %}
+
+{% block imagen %}
+    <div class="text-center">
+        <span>Imagen Actual : <a href="{{ asset('uploads/tutoriales/' ~ tutorial.rutaImagen) }}">{{ tutorial.rutaImagen }}</a></span>
+        <img src="{{ asset('uploads/pdfs/' ~ tutorial.rutaImagen) }}" style="height: 20em;width: 25em " >
+    </div>
+{% endblock %}
+
+{% block value_boton %}
+    "Guardar cambios"
+{% endblock %}

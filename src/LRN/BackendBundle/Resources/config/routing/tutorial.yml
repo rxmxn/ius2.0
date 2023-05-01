@@ -1,0 +1,27 @@
+backend_tutorial_registro:
+    pattern: /crear/
+    defaults: { _controller: BackendBundle:Tutorial:tutorialCrear }
+
+backend_tutorial_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Tutorial:tutorialEditar }
+
+backend_tutorial_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Tutorial:tutorialBorrar }
+
+backend_tutorial_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Tutorial:tutorialListar }
+
+backend_tutorial_add_paso:
+    pattern: /add/{id}/{paso_id}/
+    defaults: { _controller: BackendBundle:Tutorial:addPaso }
+
+backend_tutorial_delete_paso:
+    pattern: /cancelar/{id}/{paso_id}/
+    defaults: { _controller: BackendBundle:Tutorial:deletePaso }
+
+backend_tutorial_mostrar:
+    pattern: /mostrar/{id}/
+    defaults: { _controller: BackendBundle:Tutorial:tutorialMostrar }

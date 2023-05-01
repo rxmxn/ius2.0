@@ -1,0 +1,43 @@
+backend_homepage:
+    pattern:  /
+    defaults: { _controller: BackendBundle:Noticias:index }
+
+# Importar las rutas de la entidad Noticias generadas en el bundle BackendBundle
+backend_noticias:
+    resource: "@BackendBundle/Resources/config/routing/noticias.yml"
+    prefix:   /noticias
+
+# Importar las rutas de la entidad Tutorial generadas en el bundle BackendBundle
+backend_tutorial:
+    resource: "@BackendBundle/Resources/config/routing/tutorial.yml"
+    prefix:   /tutorial
+
+# Importar las rutas de la entidad Paso generadas en el bundle BackendBundle
+backend_paso:
+    resource: "@BackendBundle/Resources/config/routing/paso.yml"
+    prefix:   /pasos
+
+# Importar las rutas de la entidad Documento generadas en el bundle BackendBundle
+backend_documento:
+    resource: "@BackendBundle/Resources/config/routing/documentos.yml"
+    prefix:   /documentos
+
+# Importar las rutas de la entidad Conceptos generadas en el bundle BackendBundle
+backend_conceptos:
+    resource: "@BackendBundle/Resources/config/routing/conceptos.yml"
+    prefix:   /conceptos
+
+# Importar las rutas de la entidad Conceptos generadas en el bundle BackendBundle
+backend_estadisticas:
+    resource: "@BackendBundle/Resources/config/routing/estadisticas.yml"
+    prefix:   /estadisticas
+#
+## Importar las rutas de la entidad Conceptos generadas en el bundle BackendBundle
+#backend_textos:
+#    resource: "@BackendBundle/Resources/config/routing/textos.yml"
+#    prefix:   /textos
+
+# Importar las rutas de la entidad Conceptos generadas en el bundle BackendBundle
+backend_videos:
+    resource: "@BackendBundle/Resources/config/routing/videos.yml"
+    prefix:   /videos

@@ -1,0 +1,21 @@
+
+<div class="blog-artical-info-head">
+    <h2 style="font-style: normal;">{{ estadisticas.nombre }}</h2>
+</div>
+<div class="blog-artical-info-img">
+    {% if estadisticas.rutaImagen != null %}
+        <img id="{{ estadisticas.id }}" alt="..." class="img-responsive"
+             src="{{ asset('uploads/estadisticas/' ~ estadisticas.rutaImagen) }}"
+             title="post-name" style="opacity: 0.5;"
+             onmouseover="this.style.opacity=1;"
+             {#onmouseout="this.style.opacity=0.5;"#}
+             >
+    {% endif %}
+</div>
+<div class="blog-artical-info-text">
+    <p style="text-align:justify "><span style="float: left;">Categor&iacute;a:</span>
+        <a href="{{ path('estadisticas_categoria', { 'categoria': estadisticas.categoria }) }}" style="float: left;">
+            {{ estadisticas.categoria }}</a>
+        <a href="#overview">(Volver a inicio)</a></p>
+</div>
+

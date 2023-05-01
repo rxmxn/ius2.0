@@ -1,0 +1,43 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+    {% block contenido %}
+
+        <div class="container" style="margin-bottom: 20px;">
+
+            <div class="clearfix" style="height: 100%;width: 95%">
+                <div class="span12">
+
+                    <h1>Redes Sociales</h1>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th> </th>
+                            <th>N&uacute;mero Paso</th>
+                            <th>T&iacute;tulo</th>
+                            <th>Explicaci&oacute;n</th>
+                            <th>Acci&oacute;n</th>
+                        </tr>
+
+                        {% for paso in pasos %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td><a href="{{ path('backend_paso_mostrar', { 'id': paso.id }) }}">
+                                        {{ paso.numero }}
+                                    </a>
+                                </td>
+                                <td>{{ paso }}</td>
+                                <td>{{ paso.explicacion }}</td>
+                                <td>
+                                    <a href="{{ path('backend_paso_editar', { 'id': paso.id }) }}" class="btn btn-primary">Editar</a>
+                                    <a href="{{ path('backend_paso_borrar', { 'id': paso.id }) }}" class="btn btn-danger">Borrar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <a href="{{ path('backend_paso_crear') }}" class="btn btn-default">Añadir Paso</a>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

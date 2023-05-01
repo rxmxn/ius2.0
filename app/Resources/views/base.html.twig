@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}IUS2.0{% endblock %}</title>
+
+        {% block head %}{% endblock %}
+
+        {#{% block stylesheets %}{% endblock %}#}
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" style="font-family: 'Helvetica'; font-weight: lighter;">
+        <div style="margin-bottom: 30px;">
+            {% block body %}{% endblock %}
+        </div>
+
+        <footer>
+            <div class="footer" style="
+                                    /*position: fixed; */
+                                    bottom: 0; width: 100%;">
+                <div class="container">
+                <p class="copy-right"><span style="color: whitesmoke">Copyright &copy; </span>
+                    <a href="#" style="font-weight: bold">
+                        Ing. Ram&oacute;n Carrasco Dubou&eacute; &
+                        Lic. Nelvys Mendoza Gurdi&aacute;n
+                    </a>
+                </p>
+                </div>
+            </div>
+        </footer>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+
+</html>

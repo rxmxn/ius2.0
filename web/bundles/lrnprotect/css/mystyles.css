@@ -1,0 +1,98 @@
+div.infobar{
+    display: table;
+    width: 80%;
+    text-align: justify;
+    text-anchor: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    /*opacity: 1;*/
+    height: 250px;
+    /*background: url('../../../uploads/images/infobar1400px.jpg') repeat center center;*/
+    background-color: #ffffff;
+    /*box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2) inset, 0 -3px 7px rgba(0, 0, 0, 0.2) inset;*/
+    /*text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 0, 0, 0.075);*/
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.infobar span{
+    display: table-cell;
+    vertical-align: middle;
+    color: #000000;
+}
+
+.infobar span h1,
+.infobar span h2,
+.infobar span h3,
+.infobar span h4,
+.infobar span h5,
+.infobar span h6
+{
+    font-weight: lighter;
+}
+
+h1.titulo{
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin-top: 90px;
+    /*font-size: 100px;*/
+}
+
+div.categoriasbar{
+    margin-bottom: 120px;
+    background-color: #111111;
+    /*background: url('../../../uploads/images/categoriasbar1400px.jpg') repeat center center;*/
+    /*height: 200px;*/
+    display: table;
+    text-align: center;
+    width: 100%;
+}
+
+.categoriasbar div{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.categoriasbar div ul li a{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+div.middlecenter{
+    display: table;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.middlecenter span.middle{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.b-tag-weight li{
+    line-height: 10px;
+}
+
+.black-square{
+    /*background-color: #000000;*/
+    height: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    /*opacity: 0.8;*/
+    width: 100%;
+    display: table;
+    text-align: center;
+}
+
+.box_shadow{
+    box-shadow: 3px 3px 7px #777;
+    -webkit-box-shadow: 3px 3px 7px #777;
+    -moz-box-shadow: 3px 3px 7px #777;
+    -o-box-shadow: 3px 3px 7px #777;
+    opacity: 0.5;
+}

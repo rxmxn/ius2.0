@@ -1,0 +1,60 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li>
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+    {% block contenido %}
+
+        <div class="container" style="margin-bottom: 20px;">
+
+            <div class="clearfix" style="height: 100%;width: 95%">
+                <div class="span12">
+
+                    <h1>Videos</h1>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th> </th>
+                            <th>Nombre</th>
+                            <th>Acci&oacute;n</th>
+                        </tr>
+
+                        {% for video in videos %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td><a href="{{ path('backend_videos_mostrar', { 'id': video.id }) }}">
+                                        {{ video }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('backend_videos_editar', { 'id': video.id }) }}" class="btn btn-primary">Editar</a>
+                                    <a href="{{ path('backend_videos_borrar', { 'id': video.id }) }}" class="btn btn-danger">Borrar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <a href="{{ path('backend_videos_crear') }}" class="btn btn-default">Añadir Video</a>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

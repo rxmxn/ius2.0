@@ -1,0 +1,33 @@
+
+{#<div class="blog">#}
+        {#<div class="container" style="margin-bottom: 20px;">#}
+            {#<div class="blog-content">#}
+                {#<div class="wrap">#}
+                    {#<div class="blog-content-left">#}
+                        {#<div class="blog-articals">#}
+                            {#<div class="blog-artical">                                #}
+                                {#<div class="blog-artical-info">#}
+{#<div class="blog-artical-info-img">#}
+    {#{% if conceptos.rutaImagen != null %}#}
+        {#<img id="{{ conceptos.id }}" alt="..." class="img-responsive grayscale grayscale-fade"#}
+             {#src="{{ asset('uploads/conceptos/' ~ conceptos.rutaImagen) }}"#}
+             {#title="post-name">#}
+    {#{% endif %}#}
+{#</div>#}
+<div class="blog-artical-info-head" style="margin-bottom: 20px;">
+    <h2>{{ conceptos.subtitulo }}.</h2>
+</div>
+<div class="blog-artical-info-text">
+    <p style="text-align:justify ">{{ conceptos.texto | raw }}</p>
+</div>
+
+{#</div>#}
+                                {#<div class="clearfix"> </div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+

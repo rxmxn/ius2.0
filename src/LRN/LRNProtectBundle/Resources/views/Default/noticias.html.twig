@@ -1,0 +1,121 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown active">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Noticias</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar" style="margin-top: 0;">
+        <span>
+            <h3 style="margin-top: 0;">
+                En esta sección, enfocada en proveer información pormenorizada, actualizada y novedosa, se presentan
+                noticias sobre las principales redes sociales, los derechos asociados a la protección del usuario y
+                su información, las problemáticas de seguridad y sus posibles alternativas de solución.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                <li><a href="{{ path('lrn_noticias') }}">TODOS</a></li>
+                <li><a href="{{ path('videos') }}">VIDEOS</a></li>
+                {% for entity in categoria %}
+                    <li><a href="{{ path('noticias_categoria', { 'categoria': entity.categoria }) }}">{{ entity.categoria }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% for entity in entities %}
+        <div style="display: table; width: 80%; text-align: justify; margin-left: auto; margin-right: auto;
+        margin-bottom: 40px;">
+                <div class="blog-artical-info-img" style="width: 60%; height: 60%; margin-left: auto; margin-right: auto;">
+
+                    <img id="{{ entity.id }}" alt="..." class="img-responsive"
+                         src="{{ asset('uploads/images/' ~ entity.rutaFoto) }}"
+                         title="post-name" style="opacity: 0.5;"
+                         onmouseover="this.style.opacity=1;"
+                         {#onmouseout="this.style.opacity=0.5;"#}
+                            >
+
+                </div>
+                <div class="blog-artical-info-head text-center">
+                    <h2>{{ entity.titular }}</h2>
+                    <ul>
+                        <li style="font-size: 20px;">
+                            <span> </span>
+                            por {{ entity.nombreAutor }} ({{ entity.fechaArticulo|date('d-m-Y') }}),
+                            <a href="{{ path('noticias_categoria', { 'categoria': entity.categoria }) }}">
+                                {{ entity.categoria }}
+                            </a>
+
+                        </li>
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+                <div class="blog-artical-info-text">
+                    <p style="text-align:justify ">{{ entity.texto | raw }}</p>
+                </div>
+                <a href="#overview" style="float: right;">(Volver a inicio)</a></p>
+        </div>
+            <div class="clearfix"> </div>
+        {% endfor %}
+
+    {% if cantidad > 0 %}
+        <div class="blog-pagenat" style="margin-bottom: 80px;">
+            <ul>
+                <li><a href="{{ path('noticias_paginas', { 'pagina': 1 }) }}"><</a></li>
+                {% for i in 1..cantidad %}
+                    <li><a href="{{ path('noticias_paginas', { 'pagina': i}) }}"> {{ i }} </a></li>
+                {% endfor %}
+                <li><a href="{{ path('noticias_paginas', { 'pagina':  cantidad  }) }}">></a></li>
+            </ul>
+        </div>
+    {% endif %}
+
+    <div class="clearfix"> </div>
+
+{% endblock %}

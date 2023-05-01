@@ -1,0 +1,125 @@
+{% extends 'LRNProtectBundle::layout.html.twig' %}
+
+{% block contenido%}
+
+<div class="blog">
+    <div class="container">
+        <div class="col-md-9 about-left">
+        <div class="blog-content">
+            <div class="wrap">
+                <div class="blog-content-left">
+                    <div class="blog-articals">
+                        <div class="blog-artical">
+                            <div class="blog-artical-basicinfo">
+                                <ul>
+                                    <li class="post-date img-responsive"><p><span> {{ entity.fechaArticulo|date('d') }}</span><label>{{ entity.fechaArticulo|date('Y-m') }}</label></p></li>
+                                    <li class="post-date img-responsive"><p><span>{{ entity.categoria }}</span></p> </li>
+                                    {#<li class="artlick"><span> </span> <i>90</i></li>#}
+
+                                    {#<div class="clearfix"> </div>#}
+                                </ul>
+                            </div>
+                            <div class="blog-artical-info">
+                                <div class="blog-artical-info-img">
+
+                                    <img id="{{ entity.id }}" alt="..." class="img-responsive" src="{{ asset('uploads/images/' ~ entity.rutaFoto) }}" title="post-name"
+                                         onmouseover="CambiarImg({{ entity.id }}, 'true')"
+                                         onmouseout="CambiarImg({{ entity.id }}, 'false')" style="height: 20em;width: 40em;">
+
+                                </div>
+                                <div class="blog-artical-info-head">
+                                    <h2>{{ entity.titular }}</h2>
+                                    <ul>
+                                        <li><span> </span>por {{ entity.nombreAutor }}</li>
+                                        <div class="clearfix"> </div>
+                                    </ul>
+                                </div>
+                                <div class="blog-artical-info-text">
+                                    <p style="text-align:justify ">{{ entity.texto | raw  }}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 about-left">
+            <a href="{{ path('hpt_noticias') }}"><h2>&Uacute;ltimas Noticias</h2></a>
+            <!-- recent-post-grids -->
+
+            {% for entity2 in entities %}
+                <div class="recent-post-grids">
+                    <div class="r-post-grid">
+                        <div class="r-post-grid-left">
+
+                            <img id="{{ entity2.id }}" alt="..." class="img-responsive" src="{{ asset('uploads/images/' ~ entity2.rutaFoto) }}" title="post-name"
+                                 onmouseover="CambiarImg({{ entity2.id }}, 'true')"
+                                 onmouseout="CambiarImg({{ entity2.id }}, 'false')" style="height: 3em;width: 8em">
+
+                        </div>
+                        <div class="r-post-grid-right">
+                            <a  href="{{ path('noticias_show',{ 'id': entity2.id }) }}"><h4>{{ entity2.titular }}</h4></a>
+                            <p style="text-align: justify;">{{ entity2.texto }}</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- recent-post-grids -->
+
+            <!-- recent-news -->
+        </div>
+
+        </div>
+    </div>
+
+    {#<table class="record_properties">#}
+        {#<tbody>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<td>{{ entity.id }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Titular</th>#}
+                {#<td>{{ entity.titular }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Foto</th>#}
+                {#<td>{{ entity.foto }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Texto</th>#}
+                {#<td>{{ entity.texto }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Resumen</th>#}
+                {#<td>{{ entity.resumen }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Nombreautor</th>#}
+                {#<td>{{ entity.nombreAutor }}</td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Fechaarticulo</th>#}
+                {#<td>{{ entity.fechaArticulo|date('Y-m-d H:i:s') }}</td>#}
+            {#</tr>#}
+        {#</tbody>#}
+    {#</table>#}
+
+        {#<ul class="record_actions">#}
+    {#<li>#}
+        {#<a href="{{ path('noticias') }}">#}
+            {#Back to the list#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>#}
+        {#<a href="{{ path('noticias_edit', { 'id': entity.id }) }}">#}
+            {#Edit#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>{{ form(delete_form) }}</li>#}
+{#</ul>#}
+{% endblock %}

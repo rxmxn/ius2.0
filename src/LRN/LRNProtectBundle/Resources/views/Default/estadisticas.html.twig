@@ -1,0 +1,98 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1"
+                       href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block subhead %}
+    <!-- Subhead
+================================================== -->
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row black-square">
+                <h1 class="titulo">Estad&iacute;sticas</h1>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block contenido %}
+
+    <div class="grayscale infobar">
+        <span>
+            <h3>
+                En esta sección, dirigida a presentar datos en cifras actualizadas para la gestión de la seguridad
+                de los usuarios y su información en el marco de las redes sociales y el ciberespacio, se exponen los
+                resultados estadísticos de investigaciones realizadas por empresas de estudios y análisis estadísticos
+                sobre las redes sociales, sus indicadores de utilización, ventajas y desventajas, derechos asociados a
+                la protección del usuario y su información, niveles de infracciones y otras cuestiones afines.
+            </h3>
+        </span>
+    </div>
+
+    <div class="b-tag-weight grayscale categoriasbar">
+        <div>
+            <ul>
+                <li><a href="{{ path('lrn_estadisticas') }}">TODOS</a></li>
+                {% for cat in categorias %}
+                    <li><a href="{{ path('estadisticas_categoria', { 'categoria': cat.categoria }) }}">{{ cat.categoria }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% for estadistica in estadisticas %}
+
+        <div style="display: table; width: 80%; text-align: center; margin-left: auto; margin-right: auto;
+        margin-bottom: 120px;">
+            <span style="display: table-cell; vertical-align: middle;">
+                {% render controller('BackendBundle:Estadisticas:estadisticasMostrar', { 'id' : estadistica.id }) %}
+            </span>
+        </div>
+        {##}
+        {#<div style="background: url('{{ asset('uploads/images/' ~ estadistica.rutaImagen) }}') repeat center center;#}
+                {#width: 25%; height: 300px; display: table; text-align: center;">#}
+
+            {#&#123;&#35;<img id="{{ estadistica.id }}" alt="..." class="img-responsive" src="{{ asset('uploads/images/' ~ estadistica.rutaImagen) }}"&#35;&#125;#}
+            {#&#123;&#35;title="post-name"&#35;&#125;#}
+            {#&#123;&#35;onmouseover="CambiarImg({{ estadistica.id }}, 'true')"&#35;&#125;#}
+            {#&#123;&#35;onmouseout="CambiarImg({{ estadistica.id }}, 'false')" style="height: 20em;width: 40em;">&#35;&#125;#}
+            {#<a href="{{ path('estadisticas_mostrar', { 'id' : estadistica.id }) }}" style="display: table-cell; vertical-align: middle;">#}
+                {#<h2>{{ estadistica.subtitulo }}</h2>#}
+            {#</a>#}
+        {#</div>#}
+
+
+    {% endfor %}
+    <div class="clearfix" style="margin-bottom: 100px;"> </div>
+
+{% endblock %}

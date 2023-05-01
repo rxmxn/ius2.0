@@ -1,0 +1,115 @@
+{% extends "LRNProtectBundle::layout.html.twig" %}
+
+{% block menu %}
+    <li class="active">
+        <a href="{{ path('lrn_default_homepage') }}">Inicio</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_conceptos') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('lrn_estadisticas') }}">Estad&iacute;sticas</a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_tutorial_index') }}">Tutoriales</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            {% for tuto in tutoriales %}
+                <li role="presentation">
+                        <a role="menuitem" tabindex="-1"
+                           href="{{ path('find_tutorial', { 'nombreTutorial': tuto.nombreRedSocial }) }}">
+                        {{ tuto.nombreRedSocial }}
+                    </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    <li class=""><a href="{{ path('lrn_documentos') }}">Contenidos</a></li>
+    <li class="dropdown">
+        <a href="{{ path('lrn_noticias') }}">Noticias</a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dlabel">
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="{{ path('videos') }}">Videos</a>
+            </li>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+    <div class="jumbotron masthead" style="padding-top: 0; padding-bottom: 0;">
+            <div class="container" style="
+            /*background-color: #000000; opacity: .8;*/
+            width: 100%;">
+                <div style="
+                margin-bottom: 100px; margin-top: 110px;opacity: .9;
+                /*margin-top: 56px; */
+                /*margin-bottom: 40px; */
+                width: 60%;
+                margin-left: auto; margin-right: auto;">
+                    {#<img src="{{ asset('uploads/images/iusb.png') }}">#}
+                    <h1 style="margin-bottom: 1px; margin-top: 30px; opacity: 1;">
+                        IU<span>S2</span>.0
+                    </h1>
+                    <p style="margin-bottom: 1px;
+                    /*font-size: 52px; */
+                    opacity: 1;">
+                        Una mirada al</p>
+                    <p class="p2" style="margin-bottom: 1px;
+                    /*font-size: 82px; */
+                    opacity: 1;">
+                        Derecho</p>
+                    <p class="p3" style="margin-bottom: 1px;
+                    /*font-size: 36px; */
+                    opacity: 1;">
+                        en el entorno de la</p>
+                    <p class="p4" style="margin-bottom: 1px;
+                    /*font-size: 102px; */
+                    opacity: 1;">
+                        web 2.0</p>
+                </div>
+            </div>
+    </div>
+
+    {#<div class="span4">#}
+        {#<div class="text-center" style="margin-top: 10px;">#}
+            {#<h1 style="font-size: 50px;"><a href="{{ path('lrn_tutorial_index') }}">INTERACT&Uacute;A</a></h1>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="span4">#}
+        {#<div class="text-center" style="margin-top: 10px;">#}
+            {#<h1 style="font-size: 50px;"><a href="{{ path('lrn_noticias') }}">INF&Oacute;RMATE</a></h1>#}
+        {#</div>#}
+    {#</div>#}
+    {#<div class="span4">#}
+        {#<div class="text-center" style="margin-top: 10px;">#}
+            {#<h1 style="font-size: 50px;"><a href="{{ path('lrn_conceptos') }}">INSTR&Uacute;YETE</a></h1>#}
+        {#</div>#}
+    {#</div>#}
+
+    {#<div style="margin-top: 10px;" class="text-center">#}
+        {#<H3>Gestiona tu seguridad y la de tu información en las redes sociales y el ciberespacio.</H3>#}
+    {#</div>#}
+
+    <table style="width: 100%; border: 0; margin-top: 70px; margin-bottom: 30px;" class="text-center">
+        <tr>
+            <td><h1 style="font-size: 50px;"><a href="{{ path('lrn_tutorial_index') }}">INTERACT&Uacute;A</a></h1></td>
+            <td><h1 style="font-size: 50px;"><a href="{{ path('lrn_noticias') }}">INF&Oacute;RMATE</a></h1></td>
+            <td><h1 style="font-size: 50px;"><a href="{{ path('lrn_conceptos') }}">INSTR&Uacute;YETE</a></h1></td>
+        </tr>
+        <tr style="height: 150px;">
+            <td colspan="3"><H3>Gestiona tu seguridad y la de tu información en las redes sociales y el ciberespacio.</H3></td>
+        </tr>
+    </table>
+
+    {#<div class="grayscale infobar" style="margin-bottom: 50px;">#}
+        {#<span>            #}
+            {#<h3>                #}
+                {#INTERACT&Uacute;A#}
+                {#INF&Oacute;RMATE#}
+                {#INSTR&Uacute;YETE#}
+                {#Gestiona tu seguridad y la de tu información en las redes sociales y el ciberespacio.#}
+            {#</h3>#}
+        {#</span>#}
+    {#</div>#}
+
+    <div class="clearfix"> </div>
+{% endblock %}
+

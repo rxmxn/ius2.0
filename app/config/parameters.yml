@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: LRNprotectDB
+    database_user: admin
+    database_password: admin
+    mailer_transport: gmail
+    mailer_host: ~
+    mailer_user: gmail_user
+    mailer_password: gmail_password
+    locale: es
+    secret: ThisTokenIsNotSoSecretChangeIt

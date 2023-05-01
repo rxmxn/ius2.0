@@ -1,0 +1,80 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{ path('backend_conceptos_listar') }}">Conceptos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_estadisticas_listar') }}">Estadisticas</a>
+    </li>
+    <li class="active">
+        <a href="{{ path('backend_tutorial_listar') }}">Tutoriales</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_documento_listar') }}">Documentos</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_homepage') }}">Noticias</a>
+    </li>
+    <li class="">
+        <a href="{{ path('backend_videos_listar') }}">Videos</a>
+    </li>
+{% endblock %}
+
+    {% block contenido %}
+
+        <div style="display: table; width: 100%; height: 60px; text-align: center; padding-top: 20px;">
+            {% if paso.rutaImagen != null %}
+                <img id="{{ paso.id }}" alt="..."
+                     class="img-responsive grayscale grayscale-fade"
+                     src="{{ asset('uploads/tutoriales/' ~ tutorial.rutaImagen) }}"
+                     title="post-name">
+            {% endif %}
+
+        </div>
+        <div style="display: table; width: 100%; height: 60px; text-align: center; padding-top: 20px;">
+            <span style="display: table-cell; vertical-align: middle;">
+                <H1>{{ tutorial }}</H1>
+            </span>
+        </div>
+        <div style="display: table; width: 100%; height: 10px; text-align: center;">
+            <span style="display: table-cell; vertical-align: middle;">
+                <H4>({{ tutorial.fechaPublicacion|date('d/m/Y') }})</H4>
+            </span>
+        </div>
+        <div style="display: table; width: 100%; text-align: center; padding-top: 20px;">
+            <span style="display: table-cell; vertical-align: middle;">
+                {{ tutorial.descripcion | raw }}
+            </span>
+        </div>
+
+        <div style="padding-bottom: 50px;">
+        {% if tutorial.pasos is not none %}
+
+            <div style="display: table; width: 100%; text-align: center; padding-top: 20px;">
+                <span style="display: table-cell; vertical-align: middle; font-style: italic;">
+                    <H2>Pasos</H2>
+                </span>
+            </div>
+
+                {% for paso in tutorial.pasos %}
+
+                    <div style="display: table; width: 50%; text-align: justify; padding-top: 20px; padding-left: 25%;">
+                        <span style="display: table-cell; vertical-align: middle; font-style: italic;">
+                            {% render controller('BackendBundle:Paso:pasoMostrar', { 'id' : paso.id }) %}
+                        </span>
+                    </div>
+
+                    <div style="display: table; width: 100%; text-align: center; padding-top: 20px;">
+                        <span style="display: table-cell; vertical-align: middle; font-style: italic;">
+                            <a href="{{ path('backend_paso_editar', { 'id': paso.id }) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ path('backend_paso_borrar', { 'id': paso.id }) }}" class="btn btn-danger">Borrar</a>
+                        </span>
+                    </div>
+
+                {% endfor %}
+
+        {% endif %}
+        </div>
+
+    {% endblock %}

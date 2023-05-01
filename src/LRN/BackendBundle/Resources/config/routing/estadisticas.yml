@@ -1,0 +1,19 @@
+backend_estadisticas_crear:
+    pattern: /crear/
+    defaults: { _controller: BackendBundle:Estadisticas:estadisticasCrear }
+
+backend_estadisticas_editar:
+    pattern: /editar/{id}/
+    defaults: { _controller: BackendBundle:Estadisticas:estadisticasEditar }
+
+backend_estadisticas_borrar:
+    pattern: /borrar/{id}/
+    defaults: { _controller: BackendBundle:Estadisticas:estadisticasBorrar }
+
+backend_estadisticas_listar:
+    pattern: /listar/
+    defaults: { _controller: BackendBundle:Estadisticas:estadisticasListar }
+
+backend_estadisticas_mostrar:
+    pattern: /mostrar/{id}/
+    defaults: { _controller: BackendBundle:Estadisticas:estadisticasMostrar }

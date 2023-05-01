@@ -1,0 +1,13 @@
+{% extends 'BackendBundle:Pasos:paso_create.html.twig' %}
+
+{% block action %}
+    "{{ path('backend_paso_editar', { 'id': paso.id }) }}"
+{% endblock %}
+
+{% block imagen %}
+    <img src="{{ asset('uploads/tutoriales/' ~ paso.rutaImagen) }}" style="height: 20em;width: 25em " >
+{% endblock %}
+
+{% block value_boton %}
+    "Guardar cambios"
+{% endblock %}
